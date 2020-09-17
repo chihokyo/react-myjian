@@ -1,11 +1,9 @@
 import React from 'react';
-
+import Header from './common/header/index'
 function App() {
   return (
     <div className="App">
-      <header>
-        HELLO REACT!!
-      </header>
+      <Header />
     </div>
   );
 }
