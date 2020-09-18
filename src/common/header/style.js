@@ -121,36 +121,12 @@ export const SearchIconWrapper = styled.a`
 `;
 
 export const SearchInfo = styled.div`
-  visibility: hidden;
   position: absolute;
   left: 15px;
-  border-radius: 4px;
+  top: 56px;
   width: 250px;
-  opacity: 0;
+  padding: 0 20px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  &::before {
-    position: absolute;
-    top: -5px;
-    left: 27px;
-    z-index: -1;
-    width: 10px;
-    height: 10px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-    transform: rotate(45deg);
-    content: '';
-  }
-  &::after {
-    position: absolute;
-    bottom: 99%;
-    left: 20px;
-    border: 12px solid transparent;
-    border-bottom-color: #fff;
-    content: '';
-  }
-  &.show {
-    visibility: visible;
-    opacity: 1;
-  }
 `;
 
 export const SearchInfoWrapper = styled.div`
@@ -171,37 +147,23 @@ export const SearchInfoSwitch = styled.a`
   float: right;
   font-size: 13px;
   cursor: pointer;
-  &:hover {
-    color: #2f2f2f;
-  }
-  .icon-fresh {
-    width: 1em;
-    height: 1em;
-    margin-right: 0.2em;
-    transition: all 0.3s linear;
-  }
 `;
 
 export const SearchInfoList = styled.ul`
   font-size: 0;
 `;
 
-export const SearchInfoItem = styled.li`
-  display: inline-block;
+export const SearchInfoItem = styled.a`
+  display: block;
+  float: left;
   margin-right: 10px;
-  line-height: 28px;
-  a {
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    padding: 2px 6px;
-    font-size: 12px;
-    color: #787878;
-  }
-  a:hover {
-    border-color: #b4b4b4;
-    color: #333;
-    cursor: pointer;
-  }
+  line-height: 20px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  color: #787878;
+  padding: 0 5px;
+  border-radius: 3px;
 `;
 
 export const Addition = styled.div`
