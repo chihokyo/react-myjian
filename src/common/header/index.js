@@ -4,7 +4,7 @@ import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchW
 
 import { CSSTransition } from 'react-transition-group'
 
-import  * as actionCreators  from './store/actionCreators'
+import * as actionCreators from './store/actionCreators'
 
 const Header = (props) => {
   return (
@@ -76,18 +76,18 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    focused: state.headerReducer.focused
+    focused: state.headerReducer.get('focused')
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInputFocus () {
+    handleInputFocus() {
       console.log('handleInputFocus')
       const action = actionCreators.searchFocus()
       dispatch(action)
     },
-    handleInputBlur () {
+    handleInputBlur() {
       console.log('handleInputBlur')
       dispatch(actionCreators.searchBlur())
     }
