@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux-immutable'
 // // 一般写法
 // import headerReducer from '../common/header/store/reducer.js'
 // 优化写法
