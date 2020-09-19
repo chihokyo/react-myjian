@@ -170,3 +170,83 @@ const mapDispatchToProps = (dispatch) => {
 ></NavSearch>
 ```
 
+#### 关于组件拆分
+
+```shell
+# 一个组件的整体构造如下。
+├── App.js
+├── common
+│   └── header
+│       ├── index.js							# UI组件
+│       ├── store
+│       │   ├── actionCreators.js #	定义action type（其中引入常量文件costants.js)
+│       │   ├── costants.js  			# 定义action常量
+│       │   ├── index.js					# 暴露header其他组件（reducer,actioncreator,costants）
+│       │   └── reducer.js				# 定义默认数据，操作action type逻辑。（其中引入常量文件costants.js）
+│       └── style.js 							# 书写局部样式
+├── store
+│   ├── index.js
+│   └── reducer.js							# 整合其他组件reducer（比如把header所有导入）
+└── style.js
+```
+
+顺便记录一下如何在tree个目录吧。
+
+```shell
+$ brew install tree
+$ tree -L 2 -I "node_modules" # 不包含node_modules文件形成2级tree
+```
+
+为了解决一不小心修改了state这个行为。
+
+引入了*immutable.js*
+
+*immutable.js* → 可以生成一个*immutable*对象 → *immutable*不可改变 → 把*state*转换成*immutable*
+
+```
+npm install immutable
+```
+
+**因为不可修改的对象，所以在修改数据的时候获取和设置的时候需要修改方法。**
+
+```javascript
+// 1. 引入包
+import { fromJS } from 'immutable'
+// 2. fromJS（）包裹数据
+const defaultState = fromJS({
+  focused: false
+})
+
+// 3. get()获取
+// focused: state.headerReducer.focused → focused: state.headerReducer.get('focused')
+const mapStateToProps = (state) => {
+  return {
+    focused: state.headerReducer.get('focused')
+  }
+}
+// 4. set()修改
+// return {focused: true} → return state.set('focused', true)
+return state.set('focused', true)
+```
+
+因为按照上面获取
+
+state JS对象，state.headerReducer是*immutable*对象，
+
+为了统一成*immutable*对象。导入新的第三方模块
+
+修改reducer文件
+
+```javascript
+// 1. 修改导入模块 其他不变
+import { combineReducers } from 'redux-immutable'
+// 2. 修改调用方法
+return {
+ 		// focused: state.headerReducer.get('focused')
+    // focused: state.get('headerReducer').get('focused')
+    focused: state.getIn(['headerReducer', 'focused'])
+}
+```
+
+
+
