@@ -23,20 +23,26 @@ import * as actionCreators from './store/actionCreators'
 class Header extends Component {
 
   getListArea = (show) => {
-    const { focused, list } = this.props
-    if (focused) {
+    const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props
+    const newList = list.toJS()
+    const pageList = []
+    for (let i = (page - 1) * 10; i < page * 10; i++) {
+      pageList.push(
+        <SearchInfoItem key={i}>{newList[i]}</SearchInfoItem>
+      )
+    }
+    if (focused || mouseIn) {
       return (
-        <SearchInfo>
+        <SearchInfo
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <SearchInfoTitle>
             热门搜索
-            <SearchInfoSwitch>换一换</SearchInfoSwitch>
+            <SearchInfoSwitch onClick={() => { handleChangePage(page, totalPage) }}>换一换</SearchInfoSwitch>
           </SearchInfoTitle>
           <SearchInfoList>
-            {
-              list.map((item, index) => {
-                return <SearchInfoItem key={index}>{item}</SearchInfoItem>
-              })
-            }
+            {pageList}
           </SearchInfoList>
         </SearchInfo>
       )
@@ -85,7 +91,10 @@ const mapStateToProps = (state) => {
   return {
     // focused: state.get('headerReducer').get('focused')
     focused: state.getIn(['headerReducer', 'focused']),
-    list: state.getIn(['headerReducer', 'list'])
+    list: state.getIn(['headerReducer', 'list']),
+    page: state.getIn(['headerReducer', 'page']),
+    totalPage: state.getIn(['headerReducer', 'totalPage']),
+    mouseIn: state.getIn(['headerReducer', 'mouseIn']),
   }
 }
 
@@ -101,6 +110,22 @@ const mapDispatchToProps = (dispatch) => {
     handleInputBlur() {
       console.log('handleInputBlur')
       dispatch(actionCreators.searchBlur())
+    },
+    handleMouseEnter() {
+      console.log('handleMouseEnter')
+      dispatch(actionCreators.mouseEnter())
+    },
+    handleMouseLeave() {
+      console.log('handleMouseLeave')
+      dispatch(actionCreators.mouseLeave())
+    },
+    handleChangePage(page, totalPage) {
+      if (page < totalPage) {
+        dispatch(actionCreators.changePage(page + 1))
+      } else {
+        dispatch(actionCreators.changePage(1))
+      }
+
     }
   }
 }
