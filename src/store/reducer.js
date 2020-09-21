@@ -6,10 +6,11 @@ import { headerReducer } from '../common/header/store'
 // export default combineReducers({
 //   headerReducer: headerReducer
 // })
-
+import { homeReducer } from '../pages/home/store'
 
 const reducer = combineReducers({
-  headerReducer: headerReducer
+  headerReducer: headerReducer,
+  homeReducer: homeReducer
 })
 
 export default reducer
