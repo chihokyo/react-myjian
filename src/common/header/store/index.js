@@ -1,5 +1,5 @@
 import headerReducer from './reducer'
 import * as actionCreator from './actionCreators'
-import * as costants from './costants'
+import * as constants from './constants'
 
-export { headerReducer, actionCreator , costants }
+export { headerReducer, actionCreator , constants }

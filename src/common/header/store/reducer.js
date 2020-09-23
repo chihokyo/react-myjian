@@ -1,4 +1,4 @@
-import * as actionTypes from './costants.js'
+import * as actionTypes from './constants.js'
 // JS → 转换成 immutable对象
 import { fromJS } from 'immutable'
 

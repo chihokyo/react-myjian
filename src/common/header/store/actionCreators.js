@@ -1,4 +1,4 @@
-import * as actionTypes from './costants.js'
+import * as actionTypes from './constants.js'
 import axios from 'axios'
 import { fromJS } from 'immutable'
 
