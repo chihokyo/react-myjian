@@ -43,6 +43,20 @@ const defaultState = fromJS({
       desc: '这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述这里是描述',
       imgUrl: 'https://www.gamebyte.com/wp-content/uploads/2018/11/Naturo-to-Boruto-shinobi.jpeg'
     },
+  ],
+  recommendList: [
+    {
+      id: 1,
+      imgUrl: 'https://www.gamebyte.com/wp-content/uploads/2018/11/Naturo-to-Boruto-shinobi.jpeg'
+    },
+    {
+      id: 2,
+      imgUrl: 'https://www.gamebyte.com/wp-content/uploads/2018/11/Naturo-to-Boruto-shinobi.jpeg'
+    },
+    {
+      id: 3,
+      imgUrl: 'https://www.gamebyte.com/wp-content/uploads/2018/11/Naturo-to-Boruto-shinobi.jpeg'
+    }
   ]
 })
 
