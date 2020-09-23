@@ -8,15 +8,13 @@ import store from './store'
 
 function App() {
   return (
-    <div className="App">
       <Provider store={store}>
-        <Header />
         <BrowserRouter>
+          <Header />
           <Route path='/' exact component={Home}></Route>
           <Route path='/detail' exact component={Detail}></Route>
         </BrowserRouter>
       </Provider>
-    </div>
   );
 }
 
