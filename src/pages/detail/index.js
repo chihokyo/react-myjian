@@ -5,7 +5,7 @@ import { actionCreators } from './store'
 class Detail extends Component {
 
   componentDidMount() {
-    this.props.getDetail()
+    this.props.getDetail(this.props.match.params.id)
   }
 
   render() {
@@ -26,8 +26,8 @@ const mapState = (state) => ({
 })
 
 const mapDispatch = (dispatch) => ({
-  getDetail() {
-    dispatch(actionCreators.getDetailData())
+  getDetail(id) {
+    dispatch(actionCreators.getDetailData(id))
   }
 })
 
