@@ -20,6 +20,7 @@ import {
 import { CSSTransition } from 'react-transition-group'
 
 import * as actionCreators from './store/actionCreators'
+import { actionCreators as loginActionCreators } from '../../pages/login/store'
 
 class Header extends Component {
 
@@ -53,7 +54,7 @@ class Header extends Component {
   }
 
   render() {
-    const { focused, handleInputFocus, handleInputBlur, list } = this.props
+    const { focused, handleInputFocus, handleInputBlur, list, login, logout } = this.props
     return (
       <HeaderWrapper>
         <Link to='/'>
@@ -62,7 +63,10 @@ class Header extends Component {
         <Nav>
           <NavItem className='left active'>首页</NavItem>
           <NavItem className='left'>下载APP</NavItem>
-          <NavItem className='right'>登录</NavItem>
+          {
+            login ? <NavItem onClick={logout} className='right'>退出</NavItem> :
+              <Link to='/login'><NavItem className='right'>登录</NavItem></Link>
+          }
           <NavItem className='right'>
             <i className="fas fa-search">Aa</i>
           </NavItem>
@@ -98,6 +102,7 @@ const mapStateToProps = (state) => {
     page: state.getIn(['headerReducer', 'page']),
     totalPage: state.getIn(['headerReducer', 'totalPage']),
     mouseIn: state.getIn(['headerReducer', 'mouseIn']),
+    login: state.getIn(['loginReducer', 'login']),
   }
 }
 
@@ -129,7 +134,9 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(actionCreators.changePage(1))
       }
-
+    },
+    logout() {
+      dispatch(loginActionCreators.logout())
     }
   }
 }

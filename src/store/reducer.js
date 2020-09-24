@@ -8,11 +8,13 @@ import { headerReducer } from '../common/header/store'
 // })
 import { homeReducer } from '../pages/home/store'
 import { detailReducer } from '../pages/detail/store'
+import { loginReducer } from '../pages/login/store'
 
 const reducer = combineReducers({
   headerReducer: headerReducer,
   homeReducer: homeReducer,
-  detailReducer: detailReducer
+  detailReducer: detailReducer,
+  loginReducer: loginReducer
 })
 
 export default reducer
