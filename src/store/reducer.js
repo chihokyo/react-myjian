@@ -7,10 +7,12 @@ import { headerReducer } from '../common/header/store'
 //   headerReducer: headerReducer
 // })
 import { homeReducer } from '../pages/home/store'
+import { detailReducer } from '../pages/detail/store'
 
 const reducer = combineReducers({
   headerReducer: headerReducer,
-  homeReducer: homeReducer
+  homeReducer: homeReducer,
+  detailReducer: detailReducer
 })
 
 export default reducer
