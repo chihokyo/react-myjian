@@ -177,16 +177,16 @@ const mapDispatchToProps = (dispatch) => {
 ├── App.js
 ├── common
 │   └── header
-│       ├── index.js							# UI组件
+│       ├── index.js		# UI组件
 │       ├── store
-│       │   ├── actionCreators.js #	定义action type（其中引入常量文件costants.js)
-│       │   ├── costants.js  			# 定义action常量
-│       │   ├── index.js					# 暴露header其他组件（reducer,actioncreator,costants）
-│       │   └── reducer.js				# 定义默认数据，操作action type逻辑。（其中引入常量文件costants.js）
-│       └── style.js 							# 书写局部样式
+│       │   ├── actionCreators.js		#	定义action type（其中引入常量文件constants.js)
+│       │   ├── constants.js 		# 定义action常量
+│       │   ├── index.js		# 暴露header其他组件（reducer,actioncreator,constants）
+│       │   └── reducer.js		# 定义默认数据，操作action type逻辑。（其中引入常量文件constants.js）
+│       └── style.js		# 书写局部样式
 ├── store
 │   ├── index.js
-│   └── reducer.js							# 整合其他组件reducer（比如把header所有导入）
+│   └── reducer.js		# 整合其他组件reducer（比如把header所有导入）
 └── style.js
 ```
 
@@ -248,5 +248,25 @@ return {
 }
 ```
 
+关于动画效果
 
+利用的是css的transition的动画效果。每一次点击，动画角度就开始变化进行旋转。
+
+但是使用获取css这个数值的话，需要DOM节点。于是，就使用了ref的属性。
+
+通过*ref*获取DOM节点。本质上就是 ref获取节点→获取css里面的angle数值→每一次变化数值。就相当于旋转。
+
+## 关于路由
+
+react的路由前端的路由和后端的路由并不是一个概念。
+
+- 前端路由一般是指向哪一个组件
+
+- 后端路由一般是url定位资源
+
+安装路由包文件*react-router-dom*
+
+```shell
+npm install react-router-dom
+```
 
